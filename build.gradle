@@ -1,0 +1,21 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = "example.HttpKafkaServer"// 你的应用的主类
+applicationDefaultJvmArgs = []// 设置JVM参数
+
+repositories {// 设置仓库
+    mavenCentral()// 中央仓库
+}
+
+dependencies {// 设置依赖
+    compile 'io.netty:netty-all:5.0.0.Alpha1'// Netty库
+    compile 'org.apache.kafka:kafka_2.10:0.8.2-beta'// Kafka库
+
+    testCompile 'org.codehaus.groovy:groovy:2.3.6'// Groovy库
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'// Spock测试库
+}
+
+task wrapper(type: Wrapper) {/// 设置包装器
+    gradleVersion = '2.2'// 设置Gradle版本
+}
